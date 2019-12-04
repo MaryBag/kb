@@ -18,5 +18,6 @@ books_knowledge_base
 
 <= nrel_section_decomposition:
 	{
-        subject_domain_of_books
+        subject_domain_of_books;
+		subject_domain_of_article
 	};;

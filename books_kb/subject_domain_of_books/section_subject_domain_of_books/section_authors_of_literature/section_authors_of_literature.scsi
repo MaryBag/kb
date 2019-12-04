@@ -1,291 +1,201 @@
-sc_node_not_relation -> concept_fabulist;;
 
-concept_fabulist => nrel_main_idtf:
+
+
+
+
+sc_node_not_relation -> editor;;
+
+editor => nrel_main_idtf:
+        [редактор](*<-lang_ru;;*);;
+
+Definition_editor
+    => nrel_main_idtf:
+        [Опр.(редактор)]  (* <- lang_ru;; *);;
+
+editor <- rrel_key_sc_element: Definition_editor
+	(*
+	<-definition;;
+	<=nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example: "file://htmls//editor.html";;	
+		*);;
+	<= nrel_using_constants:...
+		(*
+		-> artistic_text;;
+        -> publication;;
+        -> writer;;
+		*);;
+	*);;
+
+sc_node_not_relation -> fabulist;;
+
+fabulist => nrel_main_idtf:
         [баснописец](*<-lang_ru;;*);;
 
 Definition_fabulist
     => nrel_main_idtf:
         [Опр.(баснописец)]  (* <- lang_ru;; *);;
 
-concept_fabulist <- rrel_key_sc_element: Definition_fabulist
+fabulist <- rrel_key_sc_element: Definition_fabulist
 	(*
 	<-definition;;
 	<=nrel_sc_text_translation:
 		...
 		(*
-		-> rrel_example: "file://htmls//concept_fabulist.html";;	
+		-> rrel_example: "file://htmls//fabulist.html";;	
 		*);;
 	<= nrel_using_constants:...
 		(*
-		-> concept_writer;;
+		-> writer;;
 		*);;
 	*);;
 
+sc_node_not_relation -> journalist;;
 
-sc_node_not_relation -> concept_literary_critic;;
-
-concept_literary_critic => nrel_main_idtf:
-        [литературный критик](*<-lang_ru;;*);;
-
-Definition_literary_critic
-    => nrel_main_idtf:
-        [Опр.(литературный критик)]  (* <- lang_ru;; *);;
-
-concept_literary_critic <- rrel_key_sc_element: Definition_literary_critic
-	(*
-	<-definition;;
-	<=nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example: "file://htmls//concept_literary_critic.html";;	
-		*);;
-	<= nrel_using_constants:...
-        (*
-            -> concept_person;;
-        *);;
-	*);;
-
-concept_literary_critic <- rrel_key_sc_element: ...
-(*
-    => nrel_main_idtf:[Утв.(литературный критик, литературное произведение)] (* <- lang_ru;;*);;
-    <- statement;;
-    <- statement_of_common_type;;
-    <= nrel_sc_text_translation:...
-    (*
-        -> rrel_example: "file://htmls//concept_literary_critic_statment.html";;
-        
-    -> rrel_key_sc_element:...
-    (*
-        -> concept_literary_work;;
-    *);;
-    *);;
-*);;
-
-
-sc_node_not_relation -> concept_playwright;;
-
-concept_playwright => nrel_main_idtf:
-        [драматург](*<-lang_ru;;*);;
-
-Definition_playwright
-    => nrel_main_idtf:
-        [Опр.(драматург)]  (* <- lang_ru;; *);;
-
-concept_playwright <- rrel_key_sc_element: Definition_playwright
-	(*
-	<-definition;;
-	<=nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example: "file://htmls//concept_playwright.html";;	
-		*);;
-	<= nrel_using_constants:...
-		(*
-		-> concept_writer;;
-		*);;
-	*);;
-
-
-sc_node_not_relation -> concept_war_correspondent;;
-
-concept_war_correspondent => nrel_main_idtf:
-        [военный корреспондент](*<-lang_ru;;*);;
-
-concept_war_correspondent => nrel_idtf:
-        [военкор](*<-lang_ru;;*);;
-
-Definition_war_correspondent
-    => nrel_main_idtf:
-        [Опр.(военный корреспондент)]  (* <- lang_ru;; *);;
-
-concept_war_correspondent <- rrel_key_sc_element: Definition_war_correspondent
-	(*
-	<-definition;;
-	<=nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example: "file://htmls//concept_war_correspondent.html";;	
-		*);;
-	<= nrel_using_constants:...
-		(*
-		-> concept_journalist;;
-		*);;
-	*);;
-
-
-sc_node_norole_relation->nrel_languages;;
-
-nrel_languages=>nrel_main_idtf:
-[язык произведений*](*<-lang_ru;;*);;
-
-
-Definition_nrel_languages 
-    => nrel_main_idtf:
-        [Опр.(язык произведений*)]  (* <- lang_ru;; *);;
-
-nrel_languages 
-    => nrel_first_domain: 
-        concept_writer;
-    => nrel_second_domain: 
-        languages;
-
-<- rrel_key_sc_element: Definition_nrel_languages 
-	(*
-	<-sc_definition;;
-	<=nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example: "file://htmls//nrel_languages.html";;	
-		*);;
-	<= nrel_using_constants:...
-		(*
-		-> concept_writer;;
-		-> concept_literary_work;;
-		*);;
-	*);;
-
-
-nrel_languages <- binary_relation;;
-nrel_languages <- oriented_relation;;
-nrel_languages <- antisymmetric_relation;;
-nrel_languages <- antitransitive_relation;;
-nrel_languages <- antireflexive_relation;;
-
-nrel_languages => nrel_definitional_domain:
-    ...
-    (*
-    -> concept_writer;; 
-    -> languages;;
-    *);;
-
-
-sc_node_norole_relation->nrel_literary_award;;
-
-nrel_literary_award=>nrel_main_idtf:
-[литературная премия*](*<-lang_ru;;*);;
-
-
-Definition_nrel_literary_award
-    => nrel_main_idtf:
-        [Опр.(литературная премия*)]  (* <- lang_ru;; *);;
-
-nrel_literary_award 
-    => nrel_first_domain: 
-        concept_writer;
-    => nrel_second_domain: 
-        concept_literary_award;;
-
-nrel_literary_award <- rrel_key_sc_element: Definition_nrel_literary_award
-	(*
-	<- definition;;
-	<= nrel_sc_text_translation:
-		...
-		(*
-		-> rrel_example: "file://htmls//nrel_literary_award.html";;	
-	    *);;
-    <= nrel_using_constants:...
-    (*
-        -> concept_literary_award;;
-        -> concept_writer;;
-    *);;
-	*);;
-
-
-nrel_literary_award <- binary_relation;;
-nrel_literary_award <- oriented_relation;;
-nrel_literary_award <- antisymmetric_relation;;
-nrel_literary_award <- antitransitive_relation;;
-nrel_literary_award <- antireflexive_relation;;
-
-nrel_literary_award => nrel_definitional_domain:
-    ...
-    (*
-    -> concept_writer;;
-    -> concept_literary_award;;
-    *);;
-
-
-
-sc_node_not_relation -> concept_journalist;;
-
-concept_journalist => nrel_main_idtf:
+journalist => nrel_main_idtf:
         [журналист](*<-lang_ru;;*);;
 
 Definition_journalist
     => nrel_main_idtf:
         [Опр.(журналист)]  (* <- lang_ru;; *);;
 
-concept_journalist <- rrel_key_sc_element: Definition_journalist
+journalist <- rrel_key_sc_element: Definition_journalist
 	(*
 	<-definition;;
 	<=nrel_sc_text_translation:
 		...
 		(*
-		-> rrel_example: "file://htmls//concept_journalist.html";;	
+		-> rrel_example: "file://htmls//journalist.html";;	
 		*);;
 	<= nrel_using_constants:...
         	(*
-            	-> concept_person;;
+            	-> person;;
         	*);;
 	*);;
 
+sc_node_not_relation -> literary_critic;;
 
-sc_node_not_relation -> concept_literary_award;;
+literary_critic => nrel_main_idtf:
+        [литературный критик](*<-lang_ru;;*);;
 
-concept_literary_award => nrel_main_idtf:
-        [литературная премия](*<-lang_ru;;*);;
-
-Definition_literary_award
+Definition_literary_critic
     => nrel_main_idtf:
-        [Опр.(литературная премия)]  (* <- lang_ru;; *);;
+        [Опр.(литературный критик)]  (* <- lang_ru;; *);;
 
-concept_literary_award <- rrel_key_sc_element: Definition_literary_award
+literary_critic <- rrel_key_sc_element: Definition_literary_critic
 	(*
 	<-definition;;
 	<=nrel_sc_text_translation:
 		...
 		(*
-		-> rrel_example: "file://htmls//concept_literary_award.html";;	
+		-> rrel_example: "file://htmls//literary_critic.html";;	
 		*);;
 	<= nrel_using_constants:...
         (*
-            -> concept_literary_work;;
+            -> person;;
         *);;
 	*);;
 
-concept_literary_award <- rrel_key_sc_element: ...
+literary_critic <- rrel_key_sc_element: ...
 (*
-    => nrel_main_idtf:[Утв.(литературная премия)] (* <- lang_ru;;*);;
+    => nrel_main_idtf:[Утв.(литературный критик, литературное произведение)] (* <- lang_ru;;*);;
     <- statement;;
     <- statement_of_common_type;;
     <= nrel_sc_text_translation:...
     (*
-        -> rrel_example: "file://htmls//concept_literary_award_statment.html";;
+        -> rrel_example: "file://htmls//literary_critic_statment.html";;
+        
+    -> rrel_key_sc_element:...
+    (*
+        -> literary_work;;
+    *);;
     *);;
 *);;
 
+sc_node_not_relation -> playwright;;
+
+playwright => nrel_main_idtf:
+        [драматург](*<-lang_ru;;*);;
+
+Definition_playwright
+    => nrel_main_idtf:
+        [Опр.(драматург)]  (* <- lang_ru;; *);;
+
+playwright <- rrel_key_sc_element: Definition_playwright
+	(*
+	<-definition;;
+	<=nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example: "file://htmls//playwright.html";;	
+		*);;
+	<= nrel_using_constants:...
+		(*
+		-> writer;;
+		*);;
+	*);;
+
+sc_node_not_relation -> proofreader;;
+
+proofreader => nrel_main_idtf:
+        [корректор](*<-lang_ru;;*);;
+
+Definition_proofreader
+    => nrel_main_idtf:
+        [Опр.(корректор)]  (* <- lang_ru;; *);;
+
+proofreader <- rrel_key_sc_element: Definition_proofreader
+	(*
+	<-definition;;
+	<=nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example: "file://htmls//proofreader.html";;	
+		*);;
+	<= nrel_using_constants:...
+		(*
+		-> artistic_text;;
+		*);;
+	*);;
+
+sc_node_not_relation -> war_correspondent;;
+
+war_correspondent => nrel_main_idtf:
+        [военный корреспондент](*<-lang_ru;;*);;
+
+war_correspondent => nrel_idtf:
+        [военкор](*<-lang_ru;;*);;
+
+Definition_war_correspondent
+    => nrel_main_idtf:
+        [Опр.(военный корреспондент)]  (* <- lang_ru;; *);;
+
+war_correspondent <- rrel_key_sc_element: Definition_war_correspondent
+	(*
+	<-definition;;
+	<=nrel_sc_text_translation:
+		...
+		(*
+		-> rrel_example: "file://htmls//war_correspondent.html";;	
+		*);;
+	<= nrel_using_constants:...
+		(*
+		-> journalist;;
+		*);;
+	*);;
+
+
+
+
+
+
 //
 
-concept_journalism
 
-<- sc_node_not_relation;
+philosopher
 
-=> nrel_main_idtf:
-            [публицистика] (* <- lang_ru;; *);
-
-<- rrel_key_sc_element:...
-    (*
-        => nrel_main_idtf:[Опр.(публицистика)] (* <- lang_ru;;*);;
-        <- definition;;
-        <= nrel_sc_text_translation:...
-        (*
-            -> rrel_example: "file://htmls/concept_journalism.html";;
-        *);;
-    *);;
-
-concept_philosopher
-
-<- concept_person;
+<- person;
 <- sc_node_not_relation;
 
 => nrel_main_idtf:
@@ -296,10 +206,10 @@ concept_philosopher
         <- definition;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_philosopher1.html";;
+            -> rrel_example: "file://htmls/philosopher1.html";;
         *);;
     *);;
-concept_philosopher
+philosopher
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Утв.(философ)] (* <- lang_ru;;*);;
@@ -307,47 +217,47 @@ concept_philosopher
         <- statement_of_defining_type;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_philosopher2.html";;
+            -> rrel_example: "file://htmls/philosopher2.html";;
         *);;
          <= nrel_using_constants:...
         (*
-            -> concept_person;;
+            -> person;;
         *);;
     *);;
 
-concept_prosaist
+prosaist
 
-<- concept_person;
+<- person;
 <- sc_node_not_relation;
 
 => nrel_main_idtf:
             [прозаик] (* <- lang_ru;; *);;
 
-concept_prosaist
+prosaist
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Опр.(прозаик)] (* <- lang_ru ;;*);;
         <- definition;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_prosaist.html" (* <- lang_ru;;*);;
+            -> rrel_example: "file://htmls/prosaist.html" (* <- lang_ru;;*);;
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_writer;;
-            -> concept_prose;;
+            -> writer;;
+            -> prose;;
         *);;
     *);;
 
-concept_publicist
+publicist
 
-<- concept_person;
+<- person;
 <- sc_node_not_relation;
 
 => nrel_main_idtf:
             [публицист] (* <- lang_ru;; *);;
 
-concept_publicist
+publicist
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Утв.(публицист,журналист)] (* <- lang_ru;;*);;
@@ -355,11 +265,11 @@ concept_publicist
         <- statement_of_defining_type;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_publicist1.html";;
+            -> rrel_example: "file://htmls/publicist1.html";;
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_journalist;;
+            -> journalist;;
         *);;
     *);
     ...
@@ -369,11 +279,11 @@ concept_publicist
         <- statement_of_defining_type;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_publicist2.html";;
+            -> rrel_example: "file://htmls/publicist2.html";;
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_writer;;
+            -> writer;;
         *);;
     *);;
 
@@ -381,67 +291,30 @@ concept_publicist
     <= nrel_main_idtf: [утверждение определяющего типа] (* <- lang_ru;;*);;
 
 
-concept_scenario
-<- sc_node_not_relation;
+screenwriter
 
-=> nrel_main_idtf:
-            [сценарий] (* <- lang_ru;; *);;
-
-concept_scenario
-    <- rrel_key_sc_element:...
-    (*
-        => nrel_main_idtf:[Опр.(сценарий)] (* <- lang_ru;;*);;
-        <- definition;;
-        <= nrel_sc_text_translation:...
-        (*
-            -> rrel_example: "file://htmls/concept_scenario1.html";;
-        *);;
-        <= nrel_using_constants:...
-        (*
-            -> concept_literary_work;;
-        *);;
-    *);;
-
-concept_scenario
-    <- rrel_key_sc_element:...
-    (*
-        => nrel_main_idtf:[Утв.(сценарий)] (* <- lang_ru;;*);;
-        <- statement;;
-        <- statement_of_common_type;;
-        <= nrel_sc_text_translation:...
-        (*
-            -> rrel_example: "file://htmls/concept_scenario2.html";;
-        *);;
-         <= nrel_using_constants:...
-        (*
-            -> concept_play;;
-        *);;
-    *);;
-
-concept_screenwriter
-
-<- concept_person;
+<- person;
 <- sc_node_not_relation;
 
 => nrel_main_idtf:
             [сценарист] (* <- lang_ru;; *);;
 
-concept_screenwriter
+screenwriter
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Опр.(сценарист)] (* <- lang_ru;;*);;
         <- definition;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_screenwriter1.html";;
+            -> rrel_example: "file://htmls/screenwriter1.html";;
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_author;;
-            -> concept_scenario;;
+            -> author;;
+            -> scenario;;
         *);;
     *);;
-concept_screenwriter
+screenwriter
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Утв.(сценарист,сюжет*)] (* <- lang_ru;;*);;
@@ -449,7 +322,7 @@ concept_screenwriter
         <- statement_of_common_type;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_screenwriter2.html";;
+            -> rrel_example: "file://htmls/screenwriter2.html";;
         *);;
         <= nrel_using_constants:...
         (*
@@ -460,22 +333,22 @@ concept_screenwriter
 statement_of_common_type
 =>nrel_main_idtf:[утверждение общего вида] (* <- lang_ru;;*);;
 
-concept_translator
+translator
 
-<- concept_person;
+<- person;
 <- sc_node_not_relation;
 
 => nrel_main_idtf:
             [переводчик] (* <- lang_ru;; *);;
 
-concept_translator
+translator
     <- rrel_key_sc_element:...
     (*
         => nrel_main_idtf:[Опр.(переводчик)] (* <- lang_ru;;*);;
         <- definition;;
         <= nrel_sc_text_translation:...
         (*
-            -> rrel_example: "file://htmls/concept_translator.html";;
+            -> rrel_example: "file://htmls/translator.html";;
         *);;
         <= nrel_using_constants:...
         (*
@@ -485,7 +358,7 @@ concept_translator
 
 nrel_author
 
-<- concept_person;
+<- person;
 <- sc_node_norole_relation;
 => nrel_main_idtf:
 	[ автор* ] (* <-lang_ru;; *);
@@ -495,8 +368,8 @@ nrel_author
 <- antisymmetric_relation;
 <- antitransitive_relation;
 
-=> nrel_first_domain: concept_person;
-=> nrel_second_domain:concept_literary_work;;
+=> nrel_first_domain: person;
+=> nrel_second_domain:literary_work;;
 
 nrel_author
     <- rrel_key_sc_element:...
@@ -509,43 +382,14 @@ nrel_author
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_literary_work;;
-            -> concept_fiction;;
-        *);;
-    *);;
-
-nrel_genre_work
-<- sc_node_norole_relation;
-=> nrel_main_idtf:
-	[ жанр произведения* ] (* <-lang_ru;; *);
-
-<- binary_relation;
-<- oriented_relation;
-<- antisymmetric_relation;
-<- antitransitive_relation;
-
-=> nrel_first_domain: concept_literary_work;
-=> nrel_second_domain: concept_genre;;
-
-nrel_genre_work
-    <- rrel_key_sc_element:...
-    (*
-        => nrel_main_idtf: [(Опр.(жанр произведения*)] (* <- lang_ru ;; *);;
-        <- definition;;
-        <= nrel_sc_text_translation:...
-        (*
-            -> rrel_example: "file://htmls//nrel_genre_work.html";;
-        *);;
-        <= nrel_using_constants:...
-        (*
-            -> concept;;
-            -> concept_literary_work;;
+            -> literary_work;;
+            -> fiction;;
         *);;
     *);;
 
 nrel_publisher
 
-<- concept_person;
+<- person;
 <- sc_node_norole_relation;
 => nrel_main_idtf:
 	[ издатель* ] (* <-lang_ru;; *);
@@ -556,13 +400,13 @@ nrel_publisher
 <- antitransitive_relation;
 <- antireflexive_relation;
 
-=> nrel_first_domain: concept_organization;
-=> nrel_second_domain: concept_periodical;;
+=> nrel_first_domain: organization;
+=> nrel_second_domain: periodical;;
 
 nrel_publisher
     <- rrel_key_sc_element:...
     (*
-        => nrel_main_idtf: [(Опр.(издатель*)] (* <- lang_ru ;; *);;
+        => nrel_main_idtf: [Опр.(издатель*)] (* <- lang_ru ;; *);;
         <- definition;;
         <= nrel_sc_text_translation:...
         (*
@@ -570,14 +414,52 @@ nrel_publisher
         *);;
         <= nrel_using_constants:...
         (*
-            -> concept_book;;
+            -> book;;
         *);;
     *);;
 
-    concept_organization
+    organization
     <= nrel_main_idtf: [организация] (*<- lang_ru;;*);;
-    concept_periodical
+    periodical
     <= nrel_main_idtf: [периодическое издание] (*<-lang_ru;;*);;
+
+specialist_in_literature
+<- sc_node_not_relation;
+
+=> nrel_main_idtf:
+            [литературовед] (* <- lang_ru;; *);;
+
+specialist_in_literature
+    <- rrel_key_sc_element:...
+    (*
+        => nrel_main_idtf:[Опр.(литературовед)] (* <- lang_ru;;*);;
+        <- definition;;
+        <= nrel_sc_text_translation:...
+        (*
+            -> rrel_example: "file://htmls/specialist_in_literature1.html";;
+        *);;
+         <= nrel_using_constants:...
+        (*
+            -> literary_work;;
+            -> review;;
+            -> genre_article;;
+        *);;
+    *);;
+specialist_in_literature
+    <- rrel_key_sc_element:...
+    (*
+        => nrel_main_idtf:[Утв.(литературовед, художественное произведение)] (* <- lang_ru;;*);;
+        <- statement;;
+        <- statement_of_common_type;;
+        <= nrel_sc_text_translation:...
+        (*
+            -> rrel_example: "file://htmls/specialist_in_literature2.html";;
+        *);;
+        <= nrel_using_constants:...
+        (*
+            -> fiction;;
+        *);;
+    *);;
 
 
 
